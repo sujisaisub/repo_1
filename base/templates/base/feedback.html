@@ -1,0 +1,37 @@
+{%extends 'base/basetemplate.html'%}
+
+{%block content%} 
+
+<form method="post" action="#">
+	{%csrf_token%}
+	{{form.as_p}}
+	<div class="container">
+	 <div class="row justify-content-md-center">
+	    <div class="col">
+	      <input type="text" class="form-control" placeholder="Name" name="name">
+	    </div>
+	    
+    </div>
+
+    <br>
+
+	<div class="form-group">
+	    
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+	    
+    </div>
+
+    <div class="input-group">
+  		<div class="input-group-prepend">
+   			 <span class="input-group-text">Comments</span>
+  		</div>
+  		<textarea class="form-control" aria-label="With textarea" name="text"></textarea>
+	</div>
+
+	<br>
+
+<button type="submit" name="save" value='save'>Submit</button>
+ </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{%extends 'base/basetemplate.html'%}
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+<head>
+	  
+</head>	
+<body>
+	<div id="content">
+		  <div class = "container-fluid">
+             <div class = "row justify-content-md-center">
+	                 <div class = "col-md-6">
+						{% block content %}                     
+							<h4>Thankyou for the Feedback!!!!!!</h4>
+							<br/>
+						{% endblock %}
+					 </div>
+			 </div>
+			</div>
+	</div>
+</body>	  
+</html>
