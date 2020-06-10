@@ -35,7 +35,7 @@ def Feedback_view_backup(request):
             return render(request,'base/thanks.html')
     else:
         form = FeedbackForm
-    return render(request, 'base/Feedback.html', {'form': form})
+    return render(request, 'base/feedback.html', {'form': form})
 
 def Feedback_view(response):
     print(f"response.method : {response.method}")
@@ -48,7 +48,7 @@ def Feedback_view(response):
           txt = response.POST.get("text")      
           ls.create(name=nam,email=em,text=txt)          
           return render(response,'base/greetins.html',)    
-    return render(response, 'base/Feedback.html', {'ls':ls})
+    return render(response, 'base/feedback.html', {'ls':ls})
 
 def base(request):
 	return render(request,'base/basetemplate.html')
