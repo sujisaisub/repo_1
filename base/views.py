@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect 
 from base.models import Item, ToDoList, Feedback
 from base.forms import CreateNewList, FeedbackForm
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 #def home(request):
@@ -98,3 +100,13 @@ def create(response):
 		form = CreateNewList()
 		return render(response,'base/createpage.html',{'form':form})
 
+def contact(request):
+    if request.method == 'POST':
+        c_name = request.POST['name']
+        c_em   = request.POST['email']
+        message = "Name" + ":" + c_name + "\n" + "EmailID" + ":" + c_em + "\n" + "Message" + ":" + request.POST['text']
+       
+        send_mail('ContactFormFrommywebsite',message,settings.EMAIL_HOST_USER,['sujitha.rasalingam91@gmail.com'],fail_silently=True)
+        return render(request,'base/feedback.html',{'c_name':c_name})
+    else:
+    	return render(request,'base/feedback.html')

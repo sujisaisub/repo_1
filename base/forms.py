@@ -14,4 +14,7 @@ class FeedbackForm(forms.ModelForm):
         exclude = ['name','email','text']
         #exclude = []
 
-
+class contactform(forms.Form):
+	name = forms.CharField(label='name',max_length=200)
+	email = forms.EmailField()
+	text = forms.CharField(required=True,widget=forms.Textarea)

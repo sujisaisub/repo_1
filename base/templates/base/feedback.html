@@ -1,37 +1,61 @@
 {%extends 'base/basetemplate.html'%}
+<!DOCTYPE HTML>
+{%load static%}
+<html>
+
+<head></head>
+<body>
+	
 
 {%block content%} 
 
-<form method="post" action="#">
-	{%csrf_token%}
-	{{form.as_p}}
-	<div class="container">
-	 <div class="row justify-content-md-center">
-	    <div class="col">
-	      <input type="text" class="form-control" placeholder="Name" name="name">
-	    </div>
-	    
-    </div>
+		<form method="post" action="#">
+			{%csrf_token%}
+			{{form.as_p}}
+			<br>
+			<div class="justify-content-between w-100">
+				<div class = 'card card-body' style="border-color:#6d7fcc">
+				  <h4 id = "main_line">GET IN TOUCH !!</h4>
+			</div>	
 
-    <br>
+			<div class="container">
 
-	<div class="form-group">
-	    
-	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
-	    
-    </div>
+			
+			<br>
+			<br>
+			<br>
 
-    <div class="input-group">
-  		<div class="input-group-prepend">
-   			 <span class="input-group-text">Comments</span>
-  		</div>
-  		<textarea class="form-control" aria-label="With textarea" name="text"></textarea>
-	</div>
+			 <div class="row justify-content-md-center">
+			    <div class="col">
+			      <input type="text" class="form-control" placeholder="Name" name="name" value="">
+			    </div>
+			    
+		    </div>
 
-	<br>
+		    <br>
 
-<button type="submit" name="save" value='save'>Submit</button>
- </div>
-</form>
+			<div class="form-group">
+			    
+			    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+			    
+		    </div>
 
+		    <div class="input-group">
+		  		<div class="input-group-prepend">
+		   			 <span class="input-group-text"><i>Message</i></span>
+		  		</div>
+		  		<textarea class="form-control" aria-label="With textarea" name="text"></textarea>
+			</div>
+
+			<br>
+
+		<button type="submit" name="save" value='save' class="btn btn-outline-primary">Submit</button>
+		 </div>
+		</form>
+		{% if c_name %}
+		<center><h2>Thanks {{ c_name }} for the message!!!</h2></center>
+		{% endif %}
 {% endblock %}
+
+</body>
+</html>
