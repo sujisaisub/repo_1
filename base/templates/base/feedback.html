@@ -8,11 +8,14 @@
 	
 
 {%block content%} 
-
+<div class="main">
 		<form method="post" action="#">
 			{%csrf_token%}
-			{{form.as_p}}
+			{{form.as_table}}
 			<br>
+			{% if c_name %}
+				<center><h2>Thanks {{ c_name }} for the message!!!</h2></center>
+			{% endif %}
 			<div class="justify-content-between w-100">
 				<div class = 'card card-body' style="border-color:#6d7fcc">
 				  <h4 id = "main_line">GET IN TOUCH !!</h4>
@@ -52,9 +55,8 @@
 		<button type="submit" name="save" value='save' class="btn btn-outline-primary">Submit</button>
 		 </div>
 		</form>
-		{% if c_name %}
-		<center><h2>Thanks {{ c_name }} for the message!!!</h2></center>
-		{% endif %}
+		
+	</div>
 {% endblock %}
 
 </body>

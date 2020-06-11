@@ -1,136 +1,75 @@
 {%load static%}
-
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Sujitha YY Draft</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="{% static '/css/main.css'%}" type = "text/css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-	</head>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static '/css/main.css'%}" type = "text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<style>
+body {font-family: "Lato", sans-serif;}
 
-	<body>
-		<br>
-			<div class="wrapper">
-                   
-			    <nav id="sidebar">
-                    <div class="sidebar-header">
-                        <h3>Sujitha Sai Subramanian</h3>
-                    </div>
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
 
-                    <ul class="list-unstyled components">
-                        <p>Web Page Created in Django</p>
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
 
-                        <li class="active">
-                            <a href="/home">Home</a>
-                        </li>
-              
-                       <li class="active">
-                            <a href="/portfolio">Portfolio</a>
-                        </li>
+.sidebar a:hover {
+  color: #f1f1f1;
+}
 
-                        <li class="active">
-                            <a href="/contact">Get in Touch!!</a>
-                        </li>
-                        
-                        <!--<li class="active">
-                            <a href="/contact">Contact</a>
-                        </li>
-                        <li class="active">
-                            <a href="/thanks"></a>
-                        </li> -->
-                    </ul>
-                </nav>
-              {% block content %}
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
 
-              {% endblock %}
-	   <!-- Page Content 
-			    <div id="content">
-			        <div class = "container-fluid">
-                    <div class = "row justify-content-md-center">
-                        <div class = "col-md-3">
-                            <div class = "card card-body border-0" id = "text_align" >
-                                <img id = "circle" src="{% static  '/images/My_Picture.jpg'%}" width="100" height="100" >
-                                <p>Application Developer with 7 years of experience in PLSQL coding</p>
-                                <hr>
-                                <p>Education-Bachelor of Information Technology, 2012</p>
-                            </div>  
-                        </div>  
-                    
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
 
-                    
-                        <div class = "col-lg-9">
-                            <div class = 'card card-body'>
-                                <h4 id = "main_line">What Do I know</h4>
-                                <hr>
-                                <ul id ='content'>
-                                   
+<div class="sidebar">
+  <a href="/home"><i class="fa fa-fw fa-home"></i> Home</a>
+  <br>
+  <br>
+  <a href="/portfolio"><i class="fa fa-briefcase"></i> Portfolio</a>
+  <br>
+  <br>
+  <a href="/contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+</div>
 
-                                        <img src="{% static  '/images/pl-sql.jpg'%}" width="100" height="100" >
-                                        <img src="{% static  '/images/python.jpg'%}" width="100" height="100" >
-                                        <img src="{% static  '/images/django.jpg'%}" width="100" height="100" >    
-                                        <img src="{% static  '/images/flask.jpg'%}" width="100" height="100" >       
-                                        <img src="{% static  '/images/aws.jpg'%}" width="100" height="100" >
-                                        <img src="{% static  '/images/java.jpg'%}" width="100" height="100" >
-                                        <img src="{% static  '/images/html.jpg'%}" width="100" height="100" >
-                                </ul>
-                            </div>  
-                        </div>  
-                    
-                    </div>
+<div class="main">
+  <h2>Sujitha Sai Subramanian</h2>
+  <hr>
+                        <p>Application Developer with 7 years of PLSQL experience </p>
+                          <hr>
+                          <p><h5>Company Worked</h5>
+                            <a href="https://www.albridge.com/" class='myurl'>
+                                <i>BNYMELLON-Albridge</i> 
+                            </a>
+                          </p>
+</div>
+     {% block content %}
 
-                    <br>
-
-                    <div class = "row justify-content-md-center">
-                        <div class = "col-md-6">
-                            <div class = "card card-body">
-                                
-                            </div>  
-                        </div>  
-                    
-                        <div class = "col-md-6">
-                            <div class = 'card card-body'>
-                            </div>  
-                        </div>  
-                    </div>
-
-                    <br>
-
-                    <div class = "row justify-content-md-center">
-                        <div class = "col-md-6">
-                            <div class = "card card-body">
-                            </div>  
-                        </div>  
-                    
-                    
-                        <div class = "col-md-6">
-                            <div class = 'card card-body'>
-
-                                <p>ConnectTo</p>
-                                
-                                <a href="https://www.linkedin.com/in/sujitha-sai-subramanian-218431199" class='myurl'>
-                                    <i>LinkedIn</i> 
-                                </a>
-                                <a href="{% static  '/images/sujitha_resume.docx'%}" class='myurl' >
-                                    <i>Download Resume</i> 
-                                </a>
-                                <a href="" class='myurl'>
-                                    <i>YouTube Channel</i> 
-                                </a>
-
-                            </div>  
-                        </div>  
-                    </div>
-        </div>
-			    </div>
-
-			</div>       
-
-
--->
-
-
-</div>		
-	</body>
-</html>	
+     {% endblock %}
+</body>
+</html> 
