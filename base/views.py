@@ -6,7 +6,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 #from bs4 import BeautifulSoup as BSoup
 from base.models import Headline
-from newsapi import NewsApiClient
+from newsapi.newsapi_client import NewsApiClient
 
 # Create your views here.
 #def home(request):
