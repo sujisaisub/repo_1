@@ -4,7 +4,7 @@ from base.models import Item, ToDoList, Feedback
 from base.forms import CreateNewList, FeedbackForm
 from django.core.mail import send_mail
 from django.conf import settings
-from bs4 import BeautifulSoup as BSoup
+#from bs4 import BeautifulSoup as BSoup
 from base.models import Headline
 from newsapi import NewsApiClient
 
