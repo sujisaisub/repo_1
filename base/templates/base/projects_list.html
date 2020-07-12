@@ -1,21 +1,25 @@
 {%extends 'base/basetemplate.html'%}
-{% block content %}  
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+<head>
+	  
+</head>	
 <body>
 	<div id="content">
 		  <div class = "container-fluid">
              <div class = "row justify-content-md-center">
 	                 <div class = "col-md-6">
-						                   
+						{% block content %}                     
 							<h4>Project_1</h4>
-
-							<a href="{% url 'news_agg' %}" >
+							<a href="{% 'news_aggregator.html' %}" 
                                     <i>News Aggregator</i> 
                             </a>
-							
-						
+							<br/>
+						{% endblock %}
 					 </div>
-			  </div>
+			 </div>
 			</div>
 	</div>
-
-{% endblock %}
+</body>	  
+</html>

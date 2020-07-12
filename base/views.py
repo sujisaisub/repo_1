@@ -4,6 +4,10 @@ from base.models import Item, ToDoList, Feedback
 from base.forms import CreateNewList, FeedbackForm
 from django.core.mail import send_mail
 from django.conf import settings
+import requests
+from bs4 import BeautifulSoup as BSoup
+from base.models import Headline
+from newsapi import NewsApiClient
 
 # Create your views here.
 #def home(request):
@@ -110,3 +114,90 @@ def contact(request):
         return render(request,'base/feedback.html',{'c_name':c_name})
     else:
     	return render(request,'base/feedback.html')
+
+#news aggregation
+def proj_news_list(request):
+    headlines = Headline.objects.all()[::-1]
+    context = {
+        'object_list': headlines,
+    }
+    return render(request, "base/projects_list.html", context) 
+
+def scrape(request):
+  session = request.Session()
+  session.headers = {"User-Agent": "Googlebot/2.1 (+http://www.google.com/bot.html)"}
+  url = "https://www.theonion.com/"
+  content = session.get(url, verify=False).content
+  soup = BSoup(content, "html.parser")
+  News = soup.find_all('div', {"class":"curation-module__item"})
+  for artcile in News:
+    main = artcile.find_all('a')[0]
+    link = main['href']
+    image_src = str(main.find('img')['srcset']).split(" ")[-4]
+    title = main['title']
+    new_headline = Headline()
+    new_headline.title = title
+    new_headline.url = link
+    new_headline.image = image_src
+    new_headline.save()
+  return redirect("../")
+
+def news_aggregator(request):
+    return render(request, 'base/news_aggregator.html')  
+
+
+# GEtting news from Times of India
+
+toi_r = requests.get("https://timesofindia.indiatimes.com/briefs")
+toi_soup = BSoup(toi_r.content, 'html5lib')
+
+toi_headings = toi_soup.find_all('h2')
+
+toi_headings = toi_headings[0:-13] # removing footers
+
+toi_news = []
+
+for th in toi_headings:
+    toi_news.append(th.text)
+
+
+
+#Getting news from Hindustan times
+
+ht_r = requests.get("https://www.hindustantimes.com/india-news/")
+ht_soup = BSoup(ht_r.content, 'html5lib')
+ht_headings = ht_soup.findAll("div", {"class": "headingfour"})
+ht_headings = ht_headings[2:]
+ht_news = []
+
+for hth in ht_headings:
+    ht_news.append(hth.text)
+
+
+def news_aggregator(req):
+    return render(req, 'base/news_aggregator.html', {'toi_news':toi_news, 'ht_news': ht_news})    
+
+#using NewsApiClient    
+def news_agg(request):
+  newsapi = NewsApiClient(api_key='3fe5b067769946879821f0ee5afdab83')
+  top_news = newsapi.get_top_headlines(sources='recode')
+  print(len(top_news))
+  articles = top_news['articles']
+
+  desc = []
+  news = []
+  img  = []
+  url  = []
+
+  for i in range(len(articles)):
+
+    myarticles= articles[i]
+
+    desc.append(myarticles['description'])
+    url.append(myarticles['url'])
+    img.append(myarticles['urlToImage'])
+    news.append(myarticles['title'])
+
+    mylist= zip(url, img, desc, news)
+
+  return render(request, 'base/news_aggregator.html',context={'mylist':mylist})

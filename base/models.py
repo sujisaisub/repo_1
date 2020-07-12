@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class ToDoList(models.Model):
 	name = models.CharField(max_length=200)
@@ -25,3 +26,10 @@ class Feedback(models.Model):
     def __str__(self):
         return self.name
 
+class Headline(models.Model):
+  title = models.CharField(max_length=200)
+  image = models.URLField(null=True, blank=True)
+  url = models.TextField()
+  
+  def __str__(self):
+    return self.title
