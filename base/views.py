@@ -1,12 +1,22 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect 
-from base.models import Item, ToDoList, Feedback
+from base.models import Item, ToDoList, Feedback, ChatBotModel
 from base.forms import CreateNewList, FeedbackForm
 from django.core.mail import send_mail
 from django.conf import settings
 #from bs4 import BeautifulSoup as BSoup
 from base.models import Headline
 from newsapi.newsapi_client import NewsApiClient
+
+
+#chatbotimports
+from chatterbot import ChatBot
+from chatterbot.trainers import ListTrainer
+from chatterbot.trainers import ChatterBotCorpusTrainer
+import spacy
+
+#chatbotimports
+
 
 # Create your views here.
 #def home(request):
@@ -145,3 +155,41 @@ def news_agg(request):
     mylist= zip(url, img, desc, news)
 
   return render(request, 'base/news_aggregator.html',context={'mylist':mylist})
+
+#chatbot
+
+def bot_response(request):
+  # Creating ChatBot Instance
+    global chatbot 
+    chatbot = ChatBot('Bot')
+
+    # Training with Personal Ques & Ans 
+    conversation = [
+          "Hello",
+          "Hi there!",
+          "How are you doing?",
+          "I'm doing great.",
+          "That is good to hear",
+          "Thank you.",
+          "You're welcome."
+    ]
+
+    trainer = ListTrainer(chatbot)
+    trainer.train(conversation)
+
+    # Training with English Corpus Data 
+    trainer_corpus = ChatterBotCorpusTrainer(chatbot)
+    trainer_corpus.train(
+          'chatterbot.corpus.english'
+      )
+    return render(request, 'base/chatting.html')  
+
+
+def get_bot_response(request):
+    #ls = ChatBot.objects.get(name=chatbot)
+    userText = request.GET.get('msg')
+    print('views_sujitha')
+    print(userText)
+    print(chatbot.get_response(userText))
+    return HttpResponse((chatbot.get_response(userText)))
+    
