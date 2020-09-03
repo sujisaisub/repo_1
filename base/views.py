@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect 
-from base.models import Item, ToDoList, Feedback, ChatBotModel
+from base.models import Item, ToDoList, Feedback
 from base.forms import CreateNewList, FeedbackForm
 from django.core.mail import send_mail
 from django.conf import settings
