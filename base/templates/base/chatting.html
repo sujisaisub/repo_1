@@ -31,7 +31,7 @@
           </div>
 
           <div class="msg-text">
-            Hi, welcome to Bot! Go ahead and send me a message. 😄
+            Hi, welcome to Bot! Type a message!
           </div>
         </div>
       </div>
@@ -65,10 +65,8 @@
       if (!msgText) return;
 
       appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
-      print(msgText);
       msgerInput.value = "";
       botResponse(msgText);
-      print(msgText);
     });
 
     function appendMessage(name, img, side, text) {
@@ -91,12 +89,9 @@
     }
 
     function botResponse(rawText) {
-      print('html_sujitha');
       // Bot Response
-      print(rawText);
       $.get("{% url 'get_chatting' %}" , { msg: rawText }).done(function (data) {
         console.log(rawText);
-        print(data);
         console.log(data);
         const msgText = data;
         appendMessage(BOT_NAME, BOT_IMG, "left", msgText);

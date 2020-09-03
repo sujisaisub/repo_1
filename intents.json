@@ -16,9 +16,18 @@
          "patterns": ["what are your skills?", "What are your technical skills?","what are your skill set?","skills","skill sets","skillset"],
          "responses": ["Oracle,Unix,Python,AWS-Cloud Practitioner and Developer Certified,HTML/CSS", "Oracle,Unix,Python,AWS-Cloud Practitioner and Developer Certified,HTML/CSS","Oracle,Unix,Python,AWS-Cloud Practitioner and Developer Certified,HTML/CSS","Oracle,Unix,Python,AWS-Cloud Practitioner and Developer Certified,HTML/CSS","Oracle,Unix,Python,AWS-Cloud Practitioner and Developer Certified,HTML/CSS","Oracle,Unix,Python,AWS-Cloud Practitioner and Developer Certified,HTML/CSS"]
         },
-        {"tag": "hours",
-         "patterns": ["What hours are you open?", "What are your hours?", "When are you open?" ],
-         "responses": ["We're open every day 9am-9pm", "Our hours are 9am-9pm every day"]
+        {"tag": "name",
+         "patterns": ["what is your name?", "name","How can I call you?"],
+         "responses": ["Sujitha Sai Subramanian","Sujitha Sai Subramanian","Sujitha Sai Subramanian"]
+        },
+        {"tag": "about",
+         "patterns": ["Can you tell about yourself?", "Can you give brief introduction about yourself", "about","experience" ],
+         "responses": ["Application Developer with 7 years of experience in PLSQL coding, testing and establishing system improvements. Worked on both Waterfall and Agile methodology", "Specialized in Oracle PLSQL|AWS Certified|Python Developer","Specialized in Oracle PLSQL|AWS Certified|Python Developer","Specialized in Oracle PLSQL|AWS Certified|Python Developer"]
+        },
+        {"tag": "education",
+         "patterns": ["Tell me about your educational background", "What is your educational Qualification?", "What is your degree in college?" ],
+         "responses": ["BTech with GPA of 8.5", "Bachelor of Information Technology with GPA of 8.5","Bachelor of Information Technology"]
         }
+
    ]
 }
