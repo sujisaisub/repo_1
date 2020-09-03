@@ -96,6 +96,7 @@
       print(rawText);
       $.get("{% url 'get_chatting' %}" , { msg: rawText }).done(function (data) {
         console.log(rawText);
+        print(data);
         console.log(data);
         const msgText = data;
         appendMessage(BOT_NAME, BOT_IMG, "left", msgText);

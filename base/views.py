@@ -7,15 +7,19 @@ from django.conf import settings
 #from bs4 import BeautifulSoup as BSoup
 from base.models import Headline
 from newsapi.newsapi_client import NewsApiClient
+from base.chatbot import chatbot
+from base.rootchatbot import words, labels, training, output, model, data
+import nltk
+from nltk.stem.lancaster import LancasterStemmer
+stemmer = LancasterStemmer()
 
+import numpy
+import tflearn
+import tensorflow
+import random
+import json
+import pickle
 
-#chatbotimports
-from chatterbot import ChatBot
-from chatterbot.trainers import ListTrainer
-from chatterbot.trainers import ChatterBotCorpusTrainer
-import spacy
-
-#chatbotimports
 
 
 # Create your views here.
@@ -160,29 +164,7 @@ def news_agg(request):
 
 def bot_response(request):
   # Creating ChatBot Instance
-    global chatbot 
-    chatbot = ChatBot('Bot')
-
-    # Training with Personal Ques & Ans 
-    conversation = [
-          "Hello",
-          "Hi there!",
-          "How are you doing?",
-          "I'm doing great.",
-          "That is good to hear",
-          "Thank you.",
-          "You're welcome."
-    ]
-
-    trainer = ListTrainer(chatbot)
-    trainer.train(conversation)
-
-    # Training with English Corpus Data 
-    trainer_corpus = ChatterBotCorpusTrainer(chatbot)
-    trainer_corpus.train(
-          'chatterbot.corpus.english'
-      )
-    return render(request, 'base/chatting.html')  
+   return render(request, 'base/chatting.html')  
 
 
 def get_bot_response(request):
@@ -193,3 +175,34 @@ def get_bot_response(request):
     print(chatbot.get_response(userText))
     return HttpResponse((chatbot.get_response(userText)))
     
+def bag_of_words(s, words):
+    bag = [0 for _ in range(len(words))]
+
+    s_words = nltk.word_tokenize(s)
+    s_words = [stemmer.stem(word.lower()) for word in s_words]
+
+    for se in s_words:
+        for i, w in enumerate(words):
+            if w == se:
+                bag[i] = 1
+            
+    return numpy.array(bag)
+
+
+def chat(request):
+    userText = request.GET.get('msg')
+    print(userText)
+    results = model.predict([bag_of_words(userText, words)])
+    print(results)
+    print("*******************************")
+    
+    results_index = numpy.argmax(results)
+    tag = labels[results_index]
+    print(tag)
+    for tg in data["intents"]:
+        if tg['tag'] == tag:
+            responses = tg['responses']
+
+    result = (random.choice(responses))
+    print(result)
+    return HttpResponse(result)
