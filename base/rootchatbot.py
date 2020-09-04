@@ -31,14 +31,11 @@ except:
             docs_y.append(intent["tag"])
 
         if intent["tag"] not in labels:
-            print(intent["tag"])
             labels.append(intent["tag"])
 
     words = [stemmer.stem(w.lower()) for w in words if w != "?"]
     words = sorted(list(set(words)))
-    print(words)
     labels = sorted(labels)
-    print(labels)
     training = []
     output = []
 
