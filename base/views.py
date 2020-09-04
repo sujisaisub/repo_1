@@ -194,15 +194,33 @@ def chat(request):
     print(userText)
     results = model.predict([bag_of_words(userText, words)])
     print(results)
+    print(len(results))
     print("*******************************")
+  
+    print(labels[0])
+    print(labels[1])
+    print(labels[2])
+    print(labels[3])
+    print(labels[4])
+    print(labels[5])
+    print(labels[6])
+    print(labels[7])
+    print(labels[8])
+    print(labels[9])
+    print(labels[10])
     
-    results_index = numpy.argmax(results)
-    tag = labels[results_index]
-    print(tag)
-    for tg in data["intents"]:
-        if tg['tag'] == tag:
-            responses = tg['responses']
 
-    result = (random.choice(responses))
+    results_index = numpy.argmax(results)
+    print(results_index)
+    tag = labels[results_index]
+    if results[0][results_index] > 0.7:
+      print(tag)
+      for tg in data["intents"]:
+          if tg['tag'] == tag:
+              responses = tg['responses']
+
+      result = (random.choice(responses))
+    else:
+      result = "I dint get your question, try again!"
     print(result)
     return HttpResponse(result)

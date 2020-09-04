@@ -21,13 +21,32 @@
          "responses": ["Sujitha Sai Subramanian","Sujitha Sai Subramanian","Sujitha Sai Subramanian"]
         },
         {"tag": "about",
-         "patterns": ["Can you tell about yourself?", "Can you give brief introduction about yourself", "about","experience" ],
-         "responses": ["Application Developer with 7 years of experience in PLSQL coding, testing and establishing system improvements. Worked on both Waterfall and Agile methodology", "Specialized in Oracle PLSQL|AWS Certified|Python Developer","Specialized in Oracle PLSQL|AWS Certified|Python Developer","Specialized in Oracle PLSQL|AWS Certified|Python Developer"]
+         "patterns": ["Can you tell about yourself?", "Can you give brief introduction about yourself", "about","experience","years of experience" ],
+         "responses": ["Application Developer with 7 years of experience in PLSQL coding, testing and establishing system improvements. Worked on both Waterfall and Agile methodology", "Specialized in Oracle PLSQL|AWS Certified|Python Developer","Specialized in Oracle PLSQL|AWS Certified|Python Developer","Specialized in Oracle PLSQL|AWS Certified|Python Developer","Application Developer with 7 years of experience in PLSQL coding"]
         },
         {"tag": "education",
-         "patterns": ["Tell me about your educational background", "What is your educational Qualification?", "What is your degree in college?" ],
-         "responses": ["BTech with GPA of 8.5", "Bachelor of Information Technology with GPA of 8.5","Bachelor of Information Technology"]
+         "patterns": ["Tell me about your educational background", "What is your educational Qualification?", "What is your degree in college?","education" ],
+         "responses": ["BTech with GPA of 8.5", "Bachelor of Information Technology with GPA of 8.5","Bachelor of Information Technology with GPA of 8.5","Bachelor of Information Technology with GPA of 8.5"]
+        },
+        {"tag": "domain",
+         "patterns": ["In which domain/client were you in?", "Domain/Client you were working for?","domain","client"],
+         "responses": ["Domain:Finance/Insurance;Client:Albridge Wealth Reporting", "Domain:Finance/Insurance;Client:Albridge Wealth Reporting","Domain:Finance/Insurance","Albridge"]
+        },
+        {"tag": "Previous Company",
+         "patterns": ["What are the previous companies you worked for?", "What are the companies you worked for?","How long did you work for your previous company","previous company"],
+         "responses": ["BNYMELLON Technologies-India [2012-2019]", "BNYMELLON Technologies-India [2012-2019]","BNYMELLON Technologies-India [2012-2019]","BNYMELLON Technologies-India [2012-2019]"]
+        },
+        {"tag": "Projects",
+         "patterns": ["What are the projects you worked for?", "What are the projects were you involved in?","projects"],
+         "responses": ["Please refer to the resume in my profile", "Please refer to the resume in my profile", "Please refer to the resume in my profile"]
+        },
+        {"tag": "Certifications",
+         "patterns": ["Do you have any Certifications?", "Did you gain any Certifications?","Certifications"],
+         "responses": ["AWS Certified Cloud Practitioner and AWS Certified Developer", "AWS Certified Cloud Practitioner and AWS Certified Developer","AWS Certified Cloud Practitioner and AWS Certified Developer"]
+        },
+         {"tag": "contact",
+         "patterns": ["How to contact you?", "email address","phone number","contact","reach","How to reach you?"],
+         "responses": ["Please contact me through sujitha.rasalingam91@gmail.com","Please contact me through sujitha.rasalingam91@gmail.com","Please contact me through sujitha.rasalingam91@gmail.com","Please contact me through sujitha.rasalingam91@gmail.com","Please contact me through sujitha.rasalingam91@gmail.com","Please contact me through sujitha.rasalingam91@gmail.com"]
         }
-
    ]
 }

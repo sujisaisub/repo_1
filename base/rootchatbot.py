@@ -31,6 +31,7 @@ except:
             docs_y.append(intent["tag"])
 
         if intent["tag"] not in labels:
+            print(intent["tag"])
             labels.append(intent["tag"])
 
     words = [stemmer.stem(w.lower()) for w in words if w != "?"]
@@ -80,6 +81,6 @@ model = tflearn.DNN(net)
 #try:
 #    model.load("model.tflearn")
 #except:
-model.fit(training, output, n_epoch=2000, batch_size=8, show_metric=True)
+model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
 model.save("model.tflearn")
 
