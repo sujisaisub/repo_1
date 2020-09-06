@@ -123,7 +123,7 @@ def contact(request):
         c_em   = request.POST['email']
         message = "Name" + ":" + c_name + "\n" + "EmailID" + ":" + c_em + "\n" + "Message" + ":" + request.POST['text']
        
-        send_mail('ContactFormFrommywebsite',message,settings.EMAIL_HOST_USER,['sujitha.rasalingam91@gmail.com'],fail_silently=True)
+        send_mail('ContactFormFrommywebsite',message,settings.EMAIL_HOST_USER,['sujitha.rasalingam91@gmail.com'],fail_silently=False)
         return render(request,'base/feedback.html',{'c_name':c_name})
     else:
     	return render(request,'base/feedback.html')
