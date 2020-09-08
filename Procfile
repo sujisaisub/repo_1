@@ -1,1 +1,1 @@
-web: gunicorn mywebsite.wsgi --timeout 120 --log-file -
+web: gunicorn mywebsite.wsgi --timeout 120 --preload --log-file -

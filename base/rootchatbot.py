@@ -75,9 +75,9 @@ net = tflearn.regression(net)
 
 model = tflearn.DNN(net)
 
-#try:
-#    model.load("model.tflearn")
-#except:
-model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
-model.save("model.tflearn")
+try:
+    model.load("model.tflearn")
+except:
+    model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
+    model.save("model.tflearn")
 
