@@ -213,3 +213,4 @@ def chat(request):
     print(result)
     
     return HttpResponse(result)
+
