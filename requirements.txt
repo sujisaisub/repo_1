@@ -5,7 +5,7 @@ sqlparse==0.3.1
 whitenoise==5.1.0
 newsapi==0.1.1
 newsapi-python==0.2.6
-tensorflow==1.15
+tensorflow==2.5.1
 tflearn==0.3.2
 nltk==3.4.5
 numpy==1.16.5
