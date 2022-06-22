@@ -8,5 +8,5 @@ newsapi-python==0.2.6
 tensorflow==1.15
 tflearn==0.3.2
 nltk==3.4.5
-numpy==1.16.5
+numpy==1.22.0
 json5==0.8.5
